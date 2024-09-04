@@ -32,11 +32,13 @@ public class Constant {
     public static void main(String[] args) {
         
     }
-
+    
+    // Function to append a string
     public static String appendString(String firstInput, String secondInput){
         return firstInput + " " +secondInput;
     }
 
+    // Function to count letters in a string
     public static int countLetters(String input){
         int count = 0;
         for(int i = 0; i < input.length(); i++){
@@ -45,6 +47,7 @@ public class Constant {
         return count;
     }
 
+    // Function to replace character in a string
     public static String replaceString(String input, char oldChar, char newChar){
         String output = "";
 
@@ -65,6 +68,7 @@ public class Constant {
         return output;
     }
 
+    // Function to check wheather a string is palindrome or not
     public static boolean isPalindrome(String input)
     {
         int length = countLetters(input);
@@ -89,6 +93,7 @@ public class Constant {
         return true;
     }
 
+    // Function to splice a string
     public static String spliceString(String input, int start, int length){
         String output = "";
         for(int i = 0; i < input.length(); i++){
@@ -102,6 +107,7 @@ public class Constant {
         return output;
     }
 
+    // Function to split a string
     public static String[] splitString(String originalString, char delimiter) {
         if (originalString == null) {
             return null; 
@@ -131,6 +137,7 @@ public class Constant {
         return result;
     }
 
+    // Function to abstract a substring
     private static String extractSubstring(String str, int start, int end) {
         char[] substring = new char[end - start];
         for (int i = start; i < end; i++) {
@@ -139,6 +146,7 @@ public class Constant {
         return new String(substring);
     }
 
+    // Function to reverse a string
     public static String reverseString(String input){
         if(input == null) return null;
         char[] charArray = input.toCharArray();
@@ -151,6 +159,7 @@ public class Constant {
         return new String(charArray);
     }
 
+    // Function to rotate a string
     public static String shifter(String input, int moves){
         if(input == null) return null;
         int length = input.length();
@@ -164,6 +173,7 @@ public class Constant {
         return new String(rotated);
     }
 
+    // Function to find most repeated character in a string
     public static char maxRepeat(String input) {
         if (input == null || input.length() == 0) {
             return '\0'; 
@@ -183,6 +193,7 @@ public class Constant {
         return maxChar;
     }
 
+    // Function to sort a string
     public static String sortString(String input){
         if(input == null || input.length() == 0) return input;
         char[] charArray = input.toCharArray();
