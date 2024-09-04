@@ -1,3 +1,11 @@
+/***
+ * To ask the user which operation they want to execute on the string. The available operations are
+ * listed below: Append, CountWords, Replace, isPalindrome, Splice, Split,
+ * MaxRepeatingCharacter, Sort, Shift, and Reverse.
+ * Owner : Kartik Agarwal
+ * Date : 04/09/2024
+ */
+
 import java.util.Scanner;
 
 public class BasicOperations {
