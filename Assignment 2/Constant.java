@@ -1,4 +1,7 @@
-
+/***
+ * It contains all methods and constants used in BasicOperations.java
+ * Owner Name: Kartik Agarwal
+ */
 public class Constant {
 
     final String Enter_String = "Enter the first String - ";
@@ -34,20 +37,35 @@ public class Constant {
     }
     
     // Function to append a string
+    // This function takes two string as input and add them.
+    // It returns the added string.
     public static String appendString(String firstInput, String secondInput){
-        return firstInput + " " +secondInput;
+        return firstInput + secondInput;
     }
 
     // Function to count letters in a string
-    public static int countLetters(String input){
-        int count = 0;
-        for(int i = 0; i < input.length(); i++){
-            count++;
+    // This function takes string as input and count the number of words present in the string.
+    // It returns the integer value.
+    public static int wordCount(String name){   
+        int totalLetter = 0 ;
+        boolean isWord = false;
+        for(int i = 0 ; i < name.length() ; i++ ){
+            char ch = name.charAt(i);
+            if(ch != ' ' && ch!= '\t' && ch != '.'){
+                if(!isWord){
+                    totalLetter++;
+                    isWord = true;
+                }
+            }else{
+                isWord = false;
+            }
         }
-        return count;
+        return totalLetter;
     }
 
     // Function to replace character in a string
+    // This function takes one string and two char as input and replace the old character to the new one.
+    // It returns new string
     public static String replaceString(String input, char oldChar, char newChar){
         String output = "";
 
@@ -69,61 +87,61 @@ public class Constant {
     }
 
     // Function to check wheather a string is palindrome or not
+    // This function takes string as input and check wheather they look same when they get reversed.
+    // It returns boolean value
     public static boolean isPalindrome(String input)
     {
-        int length = countLetters(input);
-
-        char[] nameChars = input.toCharArray();
+        int length = input.length();
+        char[] nameCharacter = input.toCharArray();
         for (int i = 0; i < length; i++)
         {
-            if (nameChars[i] >= 'A' && nameChars[i] <= 'Z')
+            if (nameCharacter[i] >= 'A' && nameCharacter[i] <= 'Z')
             {
-                nameChars[i] = (char) (nameChars[i] + ('a' - 'A'));
+                nameCharacter[i] = (char) (nameCharacter[i] + ('a' - 'A'));
             }
         }
-
         for (int i = 0, j = length - 1; i <= j; i++, j--)
         {
-            if (nameChars[i] != nameChars[j])
+            if (nameCharacter[i] != nameCharacter[j])
             {
                 return false;
             }
         }
-
         return true;
     }
 
     // Function to splice a string
-    public static String spliceString(String input, int start, int length){
+    // This function takes string and two integer as input and delete the string comes between the range.
+    // It returns updated string.
+    public static String spliceString(String input, int startIndex, int length){
         String output = "";
         for(int i = 0; i < input.length(); i++){
-            if(start < 0 || length < 0 || start + length > input.length()){
+            if(startIndex < 0 || length < 0 || startIndex + length > input.length()){
                 output = "Invalid input";
                 break;
             }
-            if(i>=start && i<=length-1+start) continue;
+            if(i>=startIndex && i<=length-1+startIndex) continue;
             else output = output + input.charAt(i);
         }
         return output;
     }
 
     // Function to split a string
+    // This function takes string and character as input and split the string whenever that character appears and add it into an array.
+    // It returns string array
     public static String[] splitString(String originalString, char delimiter) {
         if (originalString == null) {
             return null; 
         }
-
         int substringCount = 1; 
         for (int i = 0; i < originalString.length(); i++) {
             if (originalString.charAt(i) == delimiter) {
                 substringCount++;
             }
         }
-
         String[] result = new String[substringCount];
         int start = 0;
         int resultIndex = 0;
-
         for (int i = 0; i < originalString.length(); i++) {
             if (originalString.charAt(i) == delimiter) {
                 result[resultIndex] = extractSubstring(originalString, start, i);
@@ -131,13 +149,13 @@ public class Constant {
                 start = i + 1;
             }
         }
-
         result[resultIndex] = extractSubstring(originalString, start, originalString.length());
-
         return result;
     }
 
-    // Function to abstract a substring
+    // Function to extract a substring
+    // This function takes string and two integer as input and extracted the substring comes between those indexes.
+    // It returns the extracted string
     private static String extractSubstring(String str, int start, int end) {
         char[] substring = new char[end - start];
         for (int i = start; i < end; i++) {
@@ -147,33 +165,41 @@ public class Constant {
     }
 
     // Function to reverse a string
-    public static String reverseString(String input){
-        if(input == null) return null;
-        char[] charArray = input.toCharArray();
-        int length = charArray.length;
-        for(int i = 0; i < length / 2; i++){
-            char temp = charArray[i];
-            charArray[i] = charArray[length - 1 - 1];
-            charArray[length - 1 - i] = temp;
+    // This function takes string as input and reverse the characters in it.
+    // It returns the updated string
+    public static String reverseString(String first) {
+        char[] strArray = first.toCharArray();
+        int left = 0;
+        int right = strArray.length - 1;
+        while (left < right) {
+            char temp = strArray[left];
+            strArray[left] = strArray[right];
+            strArray[right] = temp;
+            left++;
+            right--;
         }
-        return new String(charArray);
+        return new String(strArray);
     }
 
     // Function to rotate a string
-    public static String shifter(String input, int moves){
-        if(input == null) return null;
-        int length = input.length();
-        moves = moves % length;
-        if(moves < 0) moves += length;
-        char[] rotated = new char[length];
+    // This function takes string and integer as input and add moves their indexes integer times.
+    // It returns the updated string
+    public static String shifter(String inputString, int position){
+        if(inputString == null) return null;
+        int length = inputString.length();
+        position = position % length;
+        if(position < 0) position += length;
+        char[] rotatedString = new char[length];
         for(int i = 0; i < length; i++){
-            int newPos = (i + moves) % length;
-            rotated[newPos] = input.charAt(i);
+            int newPosition = (i + position) % length;
+            rotatedString[newPosition] = inputString.charAt(i);
         }
-        return new String(rotated);
+        return new String(rotatedString);
     }
 
     // Function to find most repeated character in a string
+    // This function takes string as input and find the character that repeated most in the string.
+    // It returns the character value
     public static char maxRepeat(String input) {
         if (input == null || input.length() == 0) {
             return '\0'; 
@@ -194,6 +220,8 @@ public class Constant {
     }
 
     // Function to sort a string
+    // This function takes string as input and sort them by their ASCII values.
+    // It returns the updated string
     public static String sortString(String input){
         if(input == null || input.length() == 0) return input;
         char[] charArray = input.toCharArray();
