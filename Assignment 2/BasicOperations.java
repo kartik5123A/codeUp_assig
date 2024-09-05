@@ -10,9 +10,8 @@ import java.util.Scanner;
 
 public class BasicOperations {
 
-
+    // Function to print all the options for user to choose
     static public void options(){
-
         Constant constant = new Constant();
         System.out.println(constant.Operation);
         System.out.println(constant.Append);
@@ -44,14 +43,15 @@ public class BasicOperations {
 
                 case "1":
                     System.out.print(constant.Enter_Append);
-                    String append = scanner.next();
+                    String append = scanner.nextLine();
+                    append = scanner.nextLine();
                     currentString = constant.appendString(currentString, append);
                     System.out.println(constant.Output + currentString);
                     break;
                     
                 case "2":
                     System.out.print(constant.Input);
-                    int count = constant.countLetters(currentString);
+                    int count = constant.wordCount(currentString);
                     System.out.println(constant.Output + count);
                     break;
 
@@ -110,8 +110,9 @@ public class BasicOperations {
                     break;
 
                 case "11":
-                    System.out.print(constant.Enter_String);
-                    currentString = scanner.next();
+                    System.out.println(constant.Enter_String);
+                    currentString = scanner.nextLine();
+                    currentString = scanner.nextLine();
                     break;
 
                 case "0":
