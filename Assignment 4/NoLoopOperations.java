@@ -10,6 +10,9 @@
  * DOS: 11/09/2024
  */
 import java.util.*;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
 public class NoLoopOperations {
 
     // This function contains all operations list for user
@@ -38,7 +41,13 @@ public class NoLoopOperations {
                 case "1":
                     boolean continueCase = true;
                     while(continueCase){
-                        
+                        System.out.print(constant.StringPrompt);
+                        String stringInput = scanner.nextLine();
+                        stringInput = scanner.nextLine();
+                        String[] uniquePalindromes = new String[30]; 
+                        int[] palindromeCount = {0};
+                        method.countPalindromes(stringInput, 0, 1, uniquePalindromes, palindromeCount); 
+                        System.out.println(constant.Output + palindromeCount[0]);
                         System.out.print(constant.ContinueCase);
                         char choiceCase = scanner.next().charAt(0);
                         if(choiceCase == 'y'){continue;}
@@ -55,21 +64,33 @@ public class NoLoopOperations {
                             if(NthDigit < 0 || NthDigit > 92){System.out.println(constant.Invalid);}
                             else if(NthDigit == 0 || NthDigit == 1){System.out.println(constant.Output + NthDigit);}
                             else{int value = 1; method.NthFibonacci(0, 1, NthDigit, value);}
+                            System.out.print(constant.ContinueCase);
+                            char choiceCase = scanner.next().charAt(0);
+                            if(choiceCase == 'y'){continue;}
+                            else{continueCase = false;}
                         }
                         catch(Exception e){
                             System.out.println(constant.Invalid);
-                        }
-                        System.out.print(constant.ContinueCase);
-                        char choiceCase = scanner.next().charAt(0);
-                        if(choiceCase == 'y'){continue;}
-                        else{continueCase = false;}
+                            System.out.print(constant.ContinueCase);
+                            char choiceCase = scanner.next().charAt(0);
+                            choiceCase = scanner.next().charAt(0);
+                            if(choiceCase == 'y'){continue;}
+                            else{continueCase = false;}
+                        } 
                     }
                     break;
             
                 case "3":
                     continueCase = true;
                     while(continueCase){
-                        
+                        System.out.print(constant.StringPrompt);
+                        String stringInput = scanner.nextLine();
+                        stringInput = scanner.nextLine();
+                        String removingCharacters = "()[]{}=?!.:,-_/$@^&+%*\\\"#~/";
+                        stringInput = stringInput.replaceAll("[" + Pattern.quote(removingCharacters) + "]", " ");
+                        stringInput = stringInput.toLowerCase();
+                        System.out.println(constant.ToSnakeCase + method.ToSnake(stringInput, "", false)); 
+                        System.out.println(constant.ToCamelCase + method.ToCamel(stringInput, false, true, "")); 
                         System.out.print(constant.ContinueCase);
                         char choiceCase = scanner.next().charAt(0);
                         if(choiceCase == 'y'){continue;}
@@ -102,11 +123,29 @@ public class NoLoopOperations {
                 case "5":
                     continueCase = true;
                     while(continueCase){
-                        
-                        System.out.print(constant.ContinueCase);
-                        char choiceCase = scanner.next().charAt(0);
-                        if(choiceCase == 'y'){continue;}
-                        else{continueCase = false;}
+                        try{
+                            System.out.print(constant.BinaryToDecimalPrompt);
+                            int integerInput = scanner.nextInt();
+                            int power = 0; 
+                            int result = 0;
+                            method.BinaryToDecimal(integerInput, power, result);
+                            System.out.print(constant.ContinueCase);
+                            char choiceCase = scanner.next().charAt(0);
+                            if(choiceCase == 'y'){continue;}
+                            else{continueCase = false;}
+                        }
+                        catch(Exception e){
+                            System.out.println(constant.Invalid);
+                            System.out.print(constant.ContinueCase);
+                            char choiceCase = scanner.next().charAt(0);
+                            choiceCase = scanner.next().charAt(0);
+                            if(choiceCase == 'y'){continue;}
+                            else{continueCase = false;}
+                            System.out.print(constant.ContinueCase);
+                            choiceCase = scanner.next().charAt(0);
+                            if(choiceCase == 'y'){continue;}
+                            else{continueCase = false;}
+                        }
                     }
                     break;
 
