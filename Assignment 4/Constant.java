@@ -1,3 +1,8 @@
+/***
+ * It contains constants used in NoLoopOperations.java
+ * Owner Name: Kartik Agarwal
+ */
+
 public class Constant {
     final String StringPrompt = "Enter a String: ";
     final String IntegerPrompt = "Enter an Integer: ";
@@ -15,4 +20,7 @@ public class Constant {
     final String ContinueCase = "Do you want to continue this case(y / anythingElseForNo): ";
     final String Invalid = "Invalid Input.";
     final String IntegerPromptFibonacci = "Enter an Integer(upto 92): ";
+    final String BinaryToDecimalPrompt = "Enter a binary number: ";
+    final String ToSnakeCase = "Snake case Conversion is: ";
+    final String ToCamelCase = "Camel case Conversion is: ";
 }
